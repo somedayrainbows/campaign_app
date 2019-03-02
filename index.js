@@ -1,7 +1,7 @@
 const express = require('express')
 const passport = require('passport')
 const GoogleStrategy = require('passport-google-oauth20').Strategy
-const kays = require('./config/keys')
+const keys = require('./config/keys')
 const app = express()
 
 passport.use(
@@ -22,6 +22,11 @@ app.get(
     scope: ['profile', 'email']
     // scope: google has a list of all the different items we can ask for access to
   })
+)
+
+app.get(
+  '/auth/google/callback',
+  
 )
 
 const PORT = process.env.PORT || 5000
