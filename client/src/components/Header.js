@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
+import { Link } from 'react-router-dom'
 
 class Header extends Component {
   renderLogin() {
     switch (this.props.auth) {
       case null:
-        return 'Unsure of login status'
+        return ' '
       case false:
         return <li><a href="/auth/google">Login with Google</a></li>
       default:
@@ -14,21 +14,13 @@ class Header extends Component {
     }
   }
 
-  renderLogo() {
-    if (this.props.auth) {
-      return <a href="/surveys" className="left brand-logo">Campaign App</a>
-    } else {
-      return <a href="/" className="left brand-logo">
-        Campaign App
-      </a>
-    }
-  }
-
   render() {
     return (
       <nav>
         <div className="nav-wrapper">
-          {this.renderLogo()}
+          <a href={this.props.auth ? '/surveys' : '/'} className="left brand-logo">
+            Campaign App
+          </a>
           <ul className="right">
             {this.renderLogin()}
           </ul>
