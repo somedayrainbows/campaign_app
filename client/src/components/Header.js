@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 
 class Header extends Component {
-  renderContent() {
+  renderLogin() {
     switch (this.props.auth) {
       case null:
         return 'Unsure of login status'
@@ -14,15 +14,23 @@ class Header extends Component {
     }
   }
 
+  renderLogo() {
+    if (this.props.auth) {
+      return <a href="/surveys" className="left brand-logo">Campaign App</a>
+    } else {
+      return <a href="/" className="left brand-logo">
+        Campaign App
+      </a>
+    }
+  }
+
   render() {
     return (
       <nav>
         <div className="nav-wrapper">
-          <a href="/" className="left brand-logo">
-            Campaign App
-          </a>
+          {this.renderLogo()}
           <ul className="right">
-            {this.renderContent()}
+            {this.renderLogin()}
           </ul>
         </div>
       </nav>
