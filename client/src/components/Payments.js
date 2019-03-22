@@ -1,7 +1,7 @@
 import StripeCheckout from 'react-stripe-checkout'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../index.js'
+import * as actions from '../actions'
 
 
 class Payments extends Component {
